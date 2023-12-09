@@ -17,10 +17,10 @@ class Paragraph_01 {
 // Для проверки кода снимите комментарий ниже. После проверки - можно вернуть комментарий, чтобы не мешал вывод.
 // Для остальных задач - аналогично.
 
-// const p_01 = new Paragraph_01();
-// p_01.text =
-//   "A paragraph is a series of sentences that are organized and coherent.";
-// document.querySelector(".out-1").append(p_01.render());
+const p_01 = new Paragraph_01();
+p_01.text =
+  "A paragraph is a series of sentences that are organized and coherent.";
+document.querySelector(".out-1").append(p_01.render());
 
 // Task 02
 // Создайте класс Paragraph_02. Скопируйте в него реализацию свойств и методов из Paragraph_01.
@@ -40,8 +40,8 @@ class Paragraph_02 {
 }
 
 // Для проверки кода снимите комментарий ниже
-// const p_02 = new Paragraph_02("В раю без изменений.");
-// document.querySelector(".out-2").append(p_02.render());
+const p_02 = new Paragraph_02("В раю без изменений.");
+document.querySelector(".out-2").append(p_02.render());
 
 // Task 03
 // Создайте класс Paragraph_03. Скопируйте в него реализацию свойств и методов из Paragraph_02.
@@ -49,29 +49,69 @@ class Paragraph_02 {
 // В метод render() добавьте строку, которая проверяет свойство bold и если оно равно true,
 // оборачивает весь текст внутри параграфа тегом b. В конструктор добавьте вторым аргументом свойство bold.
 
-// тут пишем класс
+class Paragraph_03 {
+  text: string;
+  bold: boolean = false;
+  constructor(text: string, bold?: boolean) {
+    this.text = text;
+    this.bold = bold;
+  }
+  render(): HTMLParagraphElement {
+    let par: HTMLParagraphElement = document.createElement("p");
+    if (this.bold == true) {
+      par.innerHTML = `<b>${this.text}</b>`;
+    } else {
+      par.innerHTML = `${this.text}`;
+    }
+    return par;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-// const p_03 = new Paragraph_03('Земля – это память, за которую стоит бороться.', false);
-// document.querySelector('.out-3').append(p_03.render());
+const p_03 = new Paragraph_03(
+  "Земля – это память, за которую стоит бороться.",
+  false
+);
+document.querySelector(".out-3").append(p_03.render());
 
 // Task 04
 // Внесите изменение в предыдущий класс, сделав свойство bold, в функции конструкторе - необязательным.
 
 // Для проверки кода снимите комментарий ниже
-// const p_04 = new Paragraph_03('Земля – это память, за которую стоит бороться.');
-// document.querySelector('.out-4').append(p_04.render());
+const p_04 = new Paragraph_03("Земля – это память, за которую стоит бороться.");
+document.querySelector(".out-4").append(p_04.render());
 
 // Task 05
 // Создайте класс Paragraph_05, в который скопируйте содержимое класса Paragraph_03.
 // Внесите изменения в конструктор - удаляйте пробелы по краям текста перед присвоением в свойство text.
 // Добавьте изменение в метод render(), при выводе текста первая буква должна быть заглавной всегда.
 
-// тут пишем класс
+class Paragraph_05 {
+  text: string;
+  bold: boolean = false;
+  constructor(text: string, bold?: boolean) {
+    this.text = text.trim();
+    this.bold = bold;
+  }
+  render(): HTMLParagraphElement {
+    let par: HTMLParagraphElement = document.createElement("p");
+    if (this.bold == true) {
+      par.innerHTML = `<b>${this.text[0].toUpperCase}${this.text.slice(
+        1
+      )} </b>`;
+    } else {
+      par.innerHTML = `${this.text[0].toUpperCase()}${this.text.slice(1)}`;
+    }
+
+    return par;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-// const p_05 = new Paragraph_05('  и смерти нет почётней той, что ты принять готов за кости пращуров своих, за храм своих богов.  ');
-// document.querySelector('.out-5').append(p_05.render());
+const p_05 = new Paragraph_05(
+  "  и смерти нет почётней той, что ты принять готов за кости пращуров своих, за храм своих богов.  "
+);
+document.querySelector(".out-5").append(p_05.render());
 
 // Task 06
 // Изучите как устроен класс ParagraphExample и как в него передаются аргументы. Здесь применяется деструкция,
