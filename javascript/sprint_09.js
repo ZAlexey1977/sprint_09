@@ -212,12 +212,27 @@ document.querySelector(".out-9").append(ul_09.render());
 // и добавить в конец строки записанной в свойстве data (свойство data изменяется).
 // Метод должен возвращать новое свойство data. Создайте метод before, который может принять строку
 // и добавить в начало строки записанной в свойстве data (свойство data изменяется). Метод должен возвращать новое свойство data.
-// тут пишем класс
+class ModernString {
+    data;
+    constructor(data) {
+        this.data = data;
+    }
+    after(str) {
+        this.data = this.data + str;
+        return this.data;
+    }
+    before(str) {
+        this.data = str + this.data;
+        return this.data;
+    }
+}
 // Для проверки кода снимите комментарий ниже
-// const s_10 = new ModernString('cd');
-// console.log(s_10);
-// console.log(s_10.after('ef')); // ожидаю cdef
-// console.log(s_10.before('ab')); // ожидаю abcdef
+const s_10 = new ModernString("cd");
+console.log(s_10);
+console.log(s_10.after("ef")); // ожидаю cdef
+//console.log(s_10);
+console.log(s_10.before("ab")); // ожидаю abcdef
+//console.log(s_10);
 // Task 11
 // Класс может содержать только метод. Создайте класс ConsoleMessage, который содержит только метод void,
 // метод выводит в консоль то, что принимает в качестве аргумента. Имя метода - say.
