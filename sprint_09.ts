@@ -254,11 +254,11 @@ class ModernString {
   constructor(data: string) {
     this.data = data;
   }
-  after(str: string) {
+  after(str: string): string {
     this.data = this.data + str;
     return this.data;
   }
-  before(str: string) {
+  before(str: string): string {
     this.data = str + this.data;
     return this.data;
   }
@@ -276,12 +276,16 @@ console.log(s_10.before("ab")); // ожидаю abcdef
 // Класс может содержать только метод. Создайте класс ConsoleMessage, который содержит только метод void,
 // метод выводит в консоль то, что принимает в качестве аргумента. Имя метода - say.
 
-// тут пишем класс
+class ConsoleMessage {
+  say(str: string): void {
+    console.log(str);
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-// const m_11 = new ConsoleMessage();
-// console.log(m_11);
-// m_11.say('hello');
+const m_11 = new ConsoleMessage();
+console.log(m_11);
+m_11.say("hello");
 
 // Task 12
 // Создайте класс Cart, который содержит только один метод total (возвращает число),
