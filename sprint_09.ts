@@ -139,7 +139,7 @@ const obj_06: { text: string; wrap: string } = {
   wrap: "div",
 };
 const p_06 = new ParagraphExample(obj_06);
-console.log(p_06);
+//console.log(p_06);
 document.querySelector(".out-6").append(p_06.render());
 
 // Task 07
@@ -167,7 +167,7 @@ const ul_07 = new List_07([
   "Нужно работать, а не вспоминать.",
   "Даже у оружия нервы не в порядке.",
 ]);
-console.log(ul_07);
+//console.log(ul_07);
 document.querySelector(".out-7").append(ul_07.render());
 
 // Task 08
@@ -176,34 +176,71 @@ document.querySelector(".out-7").append(ul_07.render());
 // или 'ul' или 'ol', свойство по умолчанию равно 'ul'. Внесите необходимые изменения в конструктор и метод render().
 // Сделайте так, что свойство type необязательное.
 
-// тут пишем класс
+class List_08 {
+  data: string[];
+  type: string = "ul";
+  constructor({ data, type }: { data: string[]; type?: string }) {
+    this.data = data;
+    this.type = type;
+  }
+  render(): HTMLElement {
+    let elem: HTMLElement = document.createElement(`${this.type}`);
+    this.data.map((el) => {
+      let liElem: HTMLLIElement = document.createElement("li");
+      liElem.textContent = el;
+      return elem.append(liElem);
+    });
+    return elem;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-// const data_08 = {
-//     data: ['Нужно работать, а не вспоминать.', 'Даже у оружия нервы не в порядке.'],
-//     type: 'ol'
-// }
+const data_08 = {
+  data: [
+    "Нужно работать, а не вспоминать.",
+    "Даже у оружия нервы не в порядке.",
+  ],
+  type: "ol",
+};
 
-// const ul_08 = new List_08(data_08);
-// console.log(ul_08);
-// document.querySelector('.out-8').append(ul_08.render());
+const ul_08 = new List_08(data_08);
+//console.log(ul_08);
+document.querySelector(".out-8").append(ul_08.render());
 
 // Task 09
 // Создайте класс List_09, который содержит поля (свойства) data и cssClass - оба массивы string.
 // Реализуйте конструктор и метод render(), который возвращает список ul созданный на базе полученных данныx,
 // и данный список ul содержит классы CSS указанные в свойстве cssClass.
 
-// тут пишем класс
+class List_09 {
+  data: string[];
+  cssClass: string[];
+  constructor({ data, cssClass }: { data: string[]; cssClass: string[] }) {
+    (this.data = data), (this.cssClass = cssClass);
+  }
+  render(): HTMLElement {
+    let elem: HTMLElement = document.createElement("ul");
+    this.cssClass.map((el) => {
+      elem.classList.add(el);
+      return elem;
+    });
+    this.data.map((el) => {
+      let liElem: HTMLElement = document.createElement("li");
+      liElem.textContent = `${el}`;
+      return elem.append(liElem);
+    });
+    return elem;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-// const data_09 = {
-//     data: ['Jack Harper', 'Julia', 'Victoria', 'Kara'],
-//     css: ['text-orange', 'bold']
-// }
-
-// const ul_09 = new List_09(data_09);
-// console.log(ul_09);
-// document.querySelector('.out-9').append(ul_09.render());
+const data_09 = {
+  data: ["Jack Harper", "Julia", "Victoria", "Kara"],
+  cssClass: ["text-orange", "bold"],
+};
+const ul_09 = new List_09(data_09);
+console.log(ul_09);
+document.querySelector(".out-9").append(ul_09.render());
 
 // Task 10
 // Создайте класс ModernString, содержащий свойство data - строка. Создайте конструктор,
