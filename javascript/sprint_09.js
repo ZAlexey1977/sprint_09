@@ -306,7 +306,33 @@ console.log(cell_01.operator()); // Ожидаю Life
 // Измените конструктор так, чтобы он принимал номер телефона в виде строки '+380730010113'
 //после чего разделял данную строку на части. В свойство code класса заносился код - символі 073 для данного номера,
 // а в свойство phone - символы 0010113. Метод operator не меняем.
-// тут пишем класс
+class CellPhone {
+    code;
+    phone;
+    constructor(code) {
+        this.code = code;
+    }
+    operator() {
+        let Vodafone = ["050", "066", "095", "0999"];
+        let Life = ["063", "073", "093"];
+        let Kyivstar = ["067", "068", "096", "097", "098"];
+        let out = "";
+        switch (true) {
+            case Vodafone.includes(this.code):
+                out = "Vodafone";
+                break;
+            case Life.includes(this.code):
+                out = "Life";
+                break;
+            case Kyivstar.includes(this.code):
+                out = "Kyivstar";
+                break;
+            default:
+                out = "";
+        }
+        return out;
+    }
+}
 // Для проверки кода снимите комментарий ниже
 // let cell_02 = new CellPhone('+380730010113');
 // console.log(cell_02);
