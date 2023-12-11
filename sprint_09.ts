@@ -291,17 +291,25 @@ m_11.say("hello");
 // Создайте класс Cart, который содержит только один метод total (возвращает число),
 // метод может принять массив goods (смотрите сам объект) и возвращает сумму товаров в нем.
 
-// тут пишем класс
+class Cart {
+  total(arr: { articul: string; price: number; amount: number }[]): number {
+    let sum: number = arr.reduce((akkum, el) => {
+      let currentGoodsSum: number = el["price"] * el["amount"];
+      return akkum + currentGoodsSum;
+    }, 0);
+
+    return sum;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
-// const goods : {articul: string, price: number, amount: number}[] = [
-//     {articul : 'mon234', price : 3600, amount : 3},
-//     {articul : 'lap839', price : 43400, amount : 2},
-//     {articul : 'ups002', price : 980, amount : 1},
-// ];
-
-// let cart_01 = new Cart();
-// console.log(cart_01.total(goods));
+const goods: { articul: string; price: number; amount: number }[] = [
+  { articul: "mon234", price: 3600, amount: 3 },
+  { articul: "lap839", price: 43400, amount: 2 },
+  { articul: "ups002", price: 980, amount: 1 },
+];
+let cart_01 = new Cart();
+console.log(cart_01.total(goods));
 
 // Task 13
 // Создайте класс CellOperator, который содержит свойство code - string, свойство задается при создании объекта и метод operator(),
@@ -311,12 +319,37 @@ m_11.say("hello");
 // Life : 063, 073, 093
 // Kyivstar : 067, 068, 096, 097, 098
 
-// тут пишем класс
+class CellOperator {
+  code: string;
+  constructor(code: string) {
+    this.code = code;
+  }
+  operator(): string {
+    let Vodafone: string[] = ["050", "066", "095", "0999"];
+    let Life: string[] = ["063", "073", "093"];
+    let Kyivstar: string[] = ["067", "068", "096", "097", "098"];
+    let out: string = "";
+    switch (true) {
+      case Vodafone.includes(this.code):
+        out = "Vodafone";
+        break;
+      case Life.includes(this.code):
+        out = "Life";
+        break;
+      case Kyivstar.includes(this.code):
+        out = "Kyivstar";
+        break;
+      default:
+        out = "";
+    }
+    return out;
+  }
+}
 
 // Для проверки кода снимите комментарий ниже
 
-// let cell_01 = new CellOperator('093');
-// console.log(cell_01.operator()); // Ожидаю Life
+let cell_01 = new CellOperator("093");
+console.log(cell_01.operator()); // Ожидаю Life
 
 // Task 14
 // Создайте класс CellPhone в который скопируйте код из CellOperator. Добавьте свойство phone тип string.

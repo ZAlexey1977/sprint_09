@@ -248,15 +248,23 @@ m_11.say("hello");
 // Task 12
 // Создайте класс Cart, который содержит только один метод total (возвращает число),
 // метод может принять массив goods (смотрите сам объект) и возвращает сумму товаров в нем.
-// тут пишем класс
+class Cart {
+    total(arr) {
+        let sum = arr.reduce((akkum, el) => {
+            let currentGoodsSum = el["price"] * el["amount"];
+            return akkum + currentGoodsSum;
+        }, 0);
+        return sum;
+    }
+}
 // Для проверки кода снимите комментарий ниже
-// const goods : {articul: string, price: number, amount: number}[] = [
-//     {articul : 'mon234', price : 3600, amount : 3},
-//     {articul : 'lap839', price : 43400, amount : 2},
-//     {articul : 'ups002', price : 980, amount : 1},
-// ];
-// let cart_01 = new Cart();
-// console.log(cart_01.total(goods));
+const goods = [
+    { articul: "mon234", price: 3600, amount: 3 },
+    { articul: "lap839", price: 43400, amount: 2 },
+    { articul: "ups002", price: 980, amount: 1 },
+];
+let cart_01 = new Cart();
+console.log(cart_01.total(goods));
 // Task 13
 // Создайте класс CellOperator, который содержит свойство code - string, свойство задается при создании объекта и метод operator(),
 // который возвращает название оператора в зависимости от кода. Для определения оператора воспользуйтесь таблицей ниже.
@@ -264,10 +272,35 @@ m_11.say("hello");
 // Vodafone : 050,066, 095, 0999
 // Life : 063, 073, 093
 // Kyivstar : 067, 068, 096, 097, 098
-// тут пишем класс
+class CellOperator {
+    code;
+    constructor(code) {
+        this.code = code;
+    }
+    operator() {
+        let Vodafone = ["050", "066", "095", "0999"];
+        let Life = ["063", "073", "093"];
+        let Kyivstar = ["067", "068", "096", "097", "098"];
+        let out = "";
+        switch (true) {
+            case Vodafone.includes(this.code):
+                out = "Vodafone";
+                break;
+            case Life.includes(this.code):
+                out = "Life";
+                break;
+            case Kyivstar.includes(this.code):
+                out = "Kyivstar";
+                break;
+            default:
+                out = "";
+        }
+        return out;
+    }
+}
 // Для проверки кода снимите комментарий ниже
-// let cell_01 = new CellOperator('093');
-// console.log(cell_01.operator()); // Ожидаю Life
+let cell_01 = new CellOperator("093");
+console.log(cell_01.operator()); // Ожидаю Life
 // Task 14
 // Создайте класс CellPhone в который скопируйте код из CellOperator. Добавьте свойство phone тип string.
 // Измените конструктор так, чтобы он принимал номер телефона в виде строки '+380730010113'
