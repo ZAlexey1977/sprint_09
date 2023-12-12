@@ -358,10 +358,13 @@ console.log(cell_01.operator()); // Ожидаю Life
 // а в свойство phone - символы 0010113. Метод operator не меняем.
 
 class CellPhone {
+  phoneNumber: string;
   code: string;
   phone: string;
-  constructor(code: string) {
-    this.code = code;
+  constructor(phoneNumber: string) {
+    (this.phoneNumber = phoneNumber),
+      (this.phone = this.phoneNumber.slice(6)),
+      (this.code = this.phoneNumber.slice(3, 6));
   }
   operator(): string {
     let Vodafone: string[] = ["050", "066", "095", "0999"];
@@ -387,8 +390,8 @@ class CellPhone {
 
 // Для проверки кода снимите комментарий ниже
 
-// let cell_02 = new CellPhone('+380730010113');
-// console.log(cell_02);
+let cell_02 = new CellPhone("+380730010113");
+console.log(cell_02);
 
 // Task 15
 // Создайте класс Palindrome, который принимает в конструкторе строку и записывает в свойство str.
